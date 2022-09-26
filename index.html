@@ -15,11 +15,11 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: true;"
     >
-		<a-box material="color: yellow" gps-entity-place="latitude: 52.0953694; longitude: 5.1229358"> </a-box>
-		<a-box material="color: blue" gps-entity-place="latitude: 52.095542895648826; longitude: 5.1233428141758255"></a-box>
-		<a-box material="color: red" gps-entity-place="latitude: 52.095180376876; longitude: 5.123385729519832"></a-box>
-		<a-box material="color: green" gps-entity-place="latitude: -5.981874920554979; longitude: 21.55348288451505"></a-box>
-		<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5' rotation-reader>
+		<a-box look-at="gps-camera" material="color: yellow" gps-entity-place="latitude: 52.0953694; longitude: 5.1229358"> </a-box>
+		<a-box look-at="gps-camera" material="color: blue" gps-entity-place="latitude: 52.095542895648826; longitude: 5.1233428141758255"></a-box>
+		<a-box look-at="gps-camera" material="color: red" gps-entity-place="latitude: 52.095180376876; longitude: 5.123385729519832"></a-box>
+		<a-box look-at="gps-camera" material="color: green" gps-entity-place="latitude: -5.981874920554979; longitude: 21.55348288451505"></a-box>
+		<a-camera id='camera1' look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera='gpsMinDistance: 5' rotation-reader>
 		</a-camera>
     </a-scene>
   </body>
