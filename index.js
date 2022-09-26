@@ -1,22 +1,38 @@
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
+window.onload = () => {
+	let places = staticLoadPlaces();
+	renderPlaces(places);
 };
 
-function success(pos) {
-  const crd = pos.coords;
-	const magnemite = document.getElementById('magnemite')
-	magnemite.setAttribute('gps-entity-place', `latitude: ${crd.latitude}; longitude: ${crd.longitude}`)
-
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
+function staticLoadPlaces() {
+ return [
+		 {
+				 name: 'Magnemite',
+				 location: {
+						 lat: 44.496470,
+						 lng: 11.320180,
+				 }
+		 },
+ ];
 }
 
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
+function renderPlaces(places) {
+ let scene = document.querySelector('a-scene');
 
-navigator.geolocation.getCurrentPosition(success, error, options);
+ places.forEach((place) => {
+		 let latitude = place.location.lat;
+		 let longitude = place.location.lng;
+
+		 let model = document.createElement('a-entity');
+		 model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+		 model.setAttribute('gltf-model', './assets/magnemite/scene.gltf');
+		 model.setAttribute('rotation', '0 180 0');
+		 model.setAttribute('animation-mixer', '');
+		 model.setAttribute('scale', '0.1 0.1 0.1');
+
+		 model.addEventListener('loaded', () => {
+				 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+		 });
+
+		 scene.appendChild(model);
+ });
+}
