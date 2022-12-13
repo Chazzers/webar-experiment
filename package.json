@@ -2,9 +2,10 @@
   "name": "webar-experiment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "source": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "parcel build",
+    "start": "parcel"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/Chazzers/webar-experiment#readme",
   "dependencies": {
     "@ar-js-org/ar.js": "^3.4.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.1"
   }
 }
